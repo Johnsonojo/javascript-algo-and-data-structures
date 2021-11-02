@@ -60,7 +60,7 @@ const same = (array1, array2) => {
  */
 
 // declare the function
-const isValidAnagram = (str1, str2) => {
+const validAnagram = (str1, str2) => {
   // check if both strings have same length and return false if not
   if (str1.length !== str2.length) return false;
   // create two objects to store the frequency of values in both strings
@@ -119,3 +119,37 @@ const isValidAnagram = (str1, str2) => {
 // console.log(isValidAnagram("qwerty", "qeywrt")); //true
 // console.log(isValidAnagram("texttwisttime", "timetwisttext")); //true
 // console.log(isValidAnagram("cinema", "iceman")); //true
+
+/**
+ * Example
+ * Given an array of bird sightings where every element represents a bird type id,
+ * determine the id of the most frequently sighted type.
+ * If more than 1 type has been spotted that maximum amount, return the smallest of their ids.
+ */
+
+// declare the function
+function migratoryBirds(arr) {
+  arr = arr.sort();
+  let frequencyCounter = {};
+  let maxKey;
+  let valuesArray = [];
+
+  for (let item of arr) {
+    frequencyCounter[item] = ++frequencyCounter[item] || 1;
+  }
+  function getKeyByValue(object, value) {
+    return Object.keys(object).find((key) => object[key] === value);
+  }
+  // loop through the frequency counter and check for the maximum using Math.max()
+  for (const key in frequencyCounter) {
+    valuesArray.push(frequencyCounter[key]);
+    let maxNumber = Math.max(...valuesArray);
+    maxKey = getKeyByValue(frequencyCounter, maxNumber);
+  }
+  return maxKey;
+}
+
+// Uncomment this console logs to test
+// console.log(migratoryBirds([1, 1, 2, 2, 3]));
+// console.log(migratoryBirds([1, 4, 4, 4, 5, 3]));
+// console.log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4]));
