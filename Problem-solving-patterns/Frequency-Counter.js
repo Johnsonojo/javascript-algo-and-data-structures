@@ -153,3 +153,29 @@ function migratoryBirds(arr) {
 // console.log(migratoryBirds([1, 1, 2, 2, 3]));
 // console.log(migratoryBirds([1, 4, 4, 4, 5, 3]));
 // console.log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4]));
+
+/**
+ * Example:
+ * Write a function called countUniqueValues, which accepts a sorted array of integers.
+ * The function should count the unique values in the array. There can be negative numbers in the array,
+ * but it will always be sorted.
+ */
+
+function countUniqueValues(arr) {
+  if (arr.length === 0) return 0;
+  // create the counter variable
+  let counter = {};
+  // loop over the array and update the counter variable
+  for (const key of arr) {
+    counter[key] = ++counter[key] || 1;
+  }
+  let keys = Object.keys(counter);
+  // console.log(`keys`, keys);
+  return keys.length;
+  // count the number of keys in the counter.
+}
+console.log(countUniqueValues([1, 1, 1, 1, 1, 3])); // 2
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
+console.log(countUniqueValues([])); // 0
+console.log(countUniqueValues([-2, -1, -1, 0, 1])); // 4
+console.log(countUniqueValues([-3, -2, -1, 0, 1, 2, 3])); // 7
