@@ -2,6 +2,9 @@
  * Binary search only works on sorted arrays.It is a much faster form of search.Rather than
  * eliminating one element at a time, you can eliminate half of the remaining elements at a time.
  *
+ * Big O notation is:
+ * O(log n) for worst and average cases.
+ * O(1) for best case.
  */
 
 function binarySearch(arr, value) {
