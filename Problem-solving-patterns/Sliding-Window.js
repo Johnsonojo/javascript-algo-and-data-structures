@@ -25,7 +25,7 @@ function maxSubArraySum(arr, num) {
   tempSum = maxSum;
 
   for (let i = num; i < arr.length; i++) {
-    //   slide the window by subtracting the first item and adding the next item
+    // slide the window by subtracting the first item and adding the next item
     tempSum = tempSum - arr[i - num] + arr[i];
     maxSum = Math.max(maxSum, tempSum);
   }
