@@ -1,8 +1,11 @@
 // Selection Sort
-// Time Complexity: O(n^2)
 // Space Complexity: O(1)
 // Language: javascript
 // Selection sort works
+// Time Complexity:
+// Best Case: O(n^2)
+// worst Case: O(n^2)
+// Average Case: O(n^2)
 
 // Pseudocode
 // 1. Start at the first element in the array

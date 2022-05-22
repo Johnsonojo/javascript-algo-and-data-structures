@@ -4,8 +4,13 @@
 // The algorithm is named for the way smaller bubbles are always bubbled up to the top.
 // The algorithm is O(n^2) in worst-case and O(n) in average-case.
 // The algorithm is stable and does not require a temporary storage array.
-// Time Complexity: O(n^2)
 // Space Complexity: O(1)
+// Time Complexity:
+// Best Case: O(n)
+// Worst Case: O(n^2)
+// Average Case: O(n^2)
+
+// Bubble Sort performs very well for arrays that are almost sorted.
 
 function bubbleSort1(arr) {
   for (let i = arr.length; i > 0; i--) {
