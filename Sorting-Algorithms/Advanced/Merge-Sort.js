@@ -11,11 +11,6 @@
 // 2. Repeatedly merge sub-arrays to produce new sorted sub-arrays until there is only 1 sub-array remaining
 // 3. Return the sorted sub-array
 
-// function mergeSort(arr) {
-
-//   return arr;
-// }
-
 // const mergeIt = (leftArr, rightArr) => {
 //   let result = [],
 //     leftIndex = 0,
