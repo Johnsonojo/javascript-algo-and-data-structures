@@ -65,6 +65,21 @@ class SinglyLinkedList {
       return current;
     }
   }
+
+  // SHIFTING (remove a new node from the beginning of the linked list)
+  shift() {
+    if (!this.head) return undefined;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    } else {
+      let currentHead = this.head;
+      this.head = currentHead.next;
+      this.length--;
+      return currentHead;
+    }
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -75,4 +90,6 @@ list.push(11);
 // list.push(13);
 // list.push(14);
 // console.log(list.pop());
+// console.log(list.shift());
+// console.log(list.shift());
 // console.log(list);
