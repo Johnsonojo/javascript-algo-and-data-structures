@@ -116,6 +116,21 @@ class SinglyLinkedList {
     nodeToUpdate.val = value;
     return this;
   }
+
+  // SET (set a node at a given index) also called insert
+  insertAtIndex(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(value);
+    if (index === 0) return !!this.unShift(value);
+
+    const newNode = new Node(value);
+    let previousNode = this.get(index - 1);
+    let nodeToDisplace = this.get(index);
+    previousNode.next = newNode;
+    newNode.next = nodeToDisplace;
+    this.length++;
+    return true;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -132,5 +147,6 @@ list.push(11);
 // console.log(list.unShift(9));
 // console.log(list.unShift(8));
 // console.log(list.get(3));
-console.log(list.updateNodeAtIndex(1, 20));
+// console.log(list.updateNodeAtIndex(1, 20));
+console.log(list.insertAtIndex(1, 20));
 // console.log(list);
