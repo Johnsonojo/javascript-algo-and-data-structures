@@ -131,13 +131,26 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
+  // REMOVE (remove a node from the linked list at a given index)
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === this.length - 1) return this.pop();
+    if (index === 0) return this.shift();
+
+    let previousNode = this.get(index - 1);
+    let nodeToDelete = previousNode.next;
+    previousNode.next = nodeToDelete.next;
+    this.length--;
+    return nodeToDelete;
+  }
 }
 
 const list = new SinglyLinkedList();
 
 list.push(10);
 list.push(11);
-// list.push(12);
+list.push(12);
 // list.push(13);
 // list.push(14);
 // console.log(list.pop());
@@ -148,5 +161,6 @@ list.push(11);
 // console.log(list.unShift(8));
 // console.log(list.get(3));
 // console.log(list.updateNodeAtIndex(1, 20));
-console.log(list.insertAtIndex(1, 20));
-// console.log(list);
+// console.log(list.insertAtIndex(1, 20));
+console.log(list.remove(2));
+console.log(list);
