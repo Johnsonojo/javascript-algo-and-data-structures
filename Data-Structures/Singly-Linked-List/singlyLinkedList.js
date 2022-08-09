@@ -107,6 +107,15 @@ class SinglyLinkedList {
     }
     return current;
   }
+
+  // UPDATE (change the value of a node based on it's position in the linked list)
+  //also called set
+  updateNodeAtIndex(index, value) {
+    if (index < 0 || index >= this.length) return null;
+    let nodeToUpdate = this.get(index);
+    nodeToUpdate.val = value;
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -123,4 +132,5 @@ list.push(11);
 // console.log(list.unShift(9));
 // console.log(list.unShift(8));
 // console.log(list.get(3));
+console.log(list.updateNodeAtIndex(1, 20));
 // console.log(list);
