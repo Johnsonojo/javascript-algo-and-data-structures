@@ -48,10 +48,21 @@ class SinglyLinkedList {
   // POP (remove a node from the end of the list)
   pop() {
     if (!this.head) return undefined;
-    let current = this.head;
-    let previous = current;
-    while (current.next) {
-      current = current.next;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    } else {
+      let current = this.head;
+      let newTail = current;
+      while (current.next) {
+        newTail = current;
+        current = current.next;
+      }
+      this.tail = newTail;
+      this.tail.next = null;
+      this.length--;
+      return current;
     }
   }
 }
@@ -60,5 +71,8 @@ const list = new SinglyLinkedList();
 
 list.push(10);
 list.push(11);
-list.push(12);
-console.log(list);
+// list.push(12);
+// list.push(13);
+// list.push(14);
+// console.log(list.pop());
+// console.log(list);
