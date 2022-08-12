@@ -144,6 +144,38 @@ class SinglyLinkedList {
     this.length--;
     return nodeToDelete;
   }
+
+  // REVERSE (reverse a linked list in place)
+  // reverse() {
+  //   if (!this.head || !this.head.next) return this;
+  //   let current = this.head;
+  //   let previous = null;
+  //   let next = null;
+  //   while (current) {
+  //     next = current.next;
+  //     current.next = previous;
+  //     previous = current;
+  //     current = next;
+  //   }
+  //   this.head = previous;
+  //   return this;
+  // }
+
+  reverse() {
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    let next;
+    let previous = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -162,5 +194,11 @@ list.push(12);
 // console.log(list.get(3));
 // console.log(list.updateNodeAtIndex(1, 20));
 // console.log(list.insertAtIndex(1, 20));
-console.log(list.remove(2));
-console.log(list);
+console.log(list.reverse());
+// console.log(list.remove(2));
+// console.log(list);
+
+// var formatterUSD = new Intl.NumberFormat("en-US");
+
+// console.log(formatterUSD.format(0.2233 + 0.1)); // logs "0.323"
+// console.log(formatterUSD.format(1200 * (14.0 / 100))); // logs "0,323"
