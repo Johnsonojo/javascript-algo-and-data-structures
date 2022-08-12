@@ -48,11 +48,133 @@ class SinglyLinkedList {
   // POP (remove a node from the end of the list)
   pop() {
     if (!this.head) return undefined;
-    let current = this.head;
-    let previous = current;
-    while (current.next) {
-      current = current.next;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    } else {
+      let current = this.head;
+      let newTail = current;
+      while (current.next) {
+        newTail = current;
+        current = current.next;
+      }
+      this.tail = newTail;
+      this.tail.next = null;
+      this.length--;
+      return current;
     }
+  }
+
+  // SHIFTING (remove a new node from the beginning of the linked list)
+  shift() {
+    if (!this.head) return undefined;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    } else {
+      let currentHead = this.head;
+      this.head = currentHead.next;
+      this.length--;
+      return currentHead;
+    }
+  }
+
+  // UNSHIFT (add a node at the beginning of the linked list)
+  unShift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+      this.tail.next = null;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  // GET (get a node by its position in the linked list)
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let count = 0;
+    let current = this.head;
+    while (count !== index) {
+      current = current.next;
+      count++;
+    }
+    return current;
+  }
+
+  // UPDATE (change the value of a node based on it's position in the linked list)
+  //also called set
+  updateNodeAtIndex(index, value) {
+    if (index < 0 || index >= this.length) return null;
+    let nodeToUpdate = this.get(index);
+    nodeToUpdate.val = value;
+    return this;
+  }
+
+  // SET (set a node at a given index) also called insert
+  insertAtIndex(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(value);
+    if (index === 0) return !!this.unShift(value);
+
+    const newNode = new Node(value);
+    let previousNode = this.get(index - 1);
+    let nodeToDisplace = this.get(index);
+    previousNode.next = newNode;
+    newNode.next = nodeToDisplace;
+    this.length++;
+    return true;
+  }
+
+  // REMOVE (remove a node from the linked list at a given index)
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === this.length - 1) return this.pop();
+    if (index === 0) return this.shift();
+
+    let previousNode = this.get(index - 1);
+    let nodeToDelete = previousNode.next;
+    previousNode.next = nodeToDelete.next;
+    this.length--;
+    return nodeToDelete;
+  }
+
+  // REVERSE (reverse a linked list in place)
+  // reverse() {
+  //   if (!this.head || !this.head.next) return this;
+  //   let current = this.head;
+  //   let previous = null;
+  //   let next = null;
+  //   while (current) {
+  //     next = current.next;
+  //     current.next = previous;
+  //     previous = current;
+  //     current = next;
+  //   }
+  //   this.head = previous;
+  //   return this;
+  // }
+
+  reverse() {
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    let next;
+    let previous = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    return this;
   }
 }
 
@@ -61,4 +183,22 @@ const list = new SinglyLinkedList();
 list.push(10);
 list.push(11);
 list.push(12);
-console.log(list);
+// list.push(13);
+// list.push(14);
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.shift());
+// console.log(list.shift());
+// console.log(list.unShift(9));
+// console.log(list.unShift(8));
+// console.log(list.get(3));
+// console.log(list.updateNodeAtIndex(1, 20));
+// console.log(list.insertAtIndex(1, 20));
+console.log(list.reverse());
+// console.log(list.remove(2));
+// console.log(list);
+
+// var formatterUSD = new Intl.NumberFormat("en-US");
+
+// console.log(formatterUSD.format(0.2233 + 0.1)); // logs "0.323"
+// console.log(formatterUSD.format(1200 * (14.0 / 100))); // logs "0,323"
