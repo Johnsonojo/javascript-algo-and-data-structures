@@ -49,10 +49,27 @@ class DoublyLinkedList {
       return current;
     }
   }
+
+  // SHIFT(add a node to the beginning of the linked list)
+  shift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      let current = this.head;
+      this.head = newNode;
+      newNode.next = current;
+      current.prev = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 const list = new DoublyLinkedList();
 list.push(10);
 list.push(11);
 console.log(list.pop());
+list.shift(30);
 console.log(list);
