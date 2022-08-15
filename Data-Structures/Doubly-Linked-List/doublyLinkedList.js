@@ -75,12 +75,26 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  // GET(accessing a node in a doubly linked list by its index)
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let current = this.head;
+    let count = 0;
+    while (count !== index) {
+      current = current.next;
+      count++;
+    }
+    return current;
+  }
 }
 
 const list = new DoublyLinkedList();
 list.push(10);
 list.push(11);
+list.push(12);
 list.pop();
 list.shift();
 list.unShift(30);
-console.log(list);
+console.log(list.get(0));
+// console.log(list);
