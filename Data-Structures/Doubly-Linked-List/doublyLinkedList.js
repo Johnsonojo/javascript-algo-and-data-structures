@@ -79,11 +79,21 @@ class DoublyLinkedList {
   // GET(accessing a node in a doubly linked list by its index)
   get(index) {
     if (index < 0 || index >= this.length) return null;
-    let current = this.head;
-    let count = 0;
-    while (count !== index) {
-      current = current.next;
-      count++;
+    let count, current;
+    if (index <= this.length / 2) {
+      count = 0;
+      current = this.head;
+      while (count !== index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      current = this.tail;
+      while (count !== index) {
+        current = current.prev;
+        count--;
+      }
     }
     return current;
   }
@@ -93,8 +103,14 @@ const list = new DoublyLinkedList();
 list.push(10);
 list.push(11);
 list.push(12);
-list.pop();
-list.shift();
-list.unShift(30);
-console.log(list.get(0));
+list.push(13);
+list.push(14);
+list.push(15);
+list.push(16);
+list.push(17);
+list.push(18);
+// list.pop();
+// list.shift();
+// list.unShift(30);
+console.log(list.get(5));
 // console.log(list);
