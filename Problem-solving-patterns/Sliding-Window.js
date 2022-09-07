@@ -17,7 +17,6 @@ function maxSubArraySum(arr, num) {
   let maxSum = 0;
   // declare a tempSum variable
   let tempSum = 0;
-
   // sum the first num element of the array
   for (let i = 0; i < num; i++) {
     maxSum += arr[i];
