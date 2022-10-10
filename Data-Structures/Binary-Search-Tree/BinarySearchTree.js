@@ -80,16 +80,32 @@ class BST {
     if (!found) return null;
     return current;
   }
+
+  BFS() {
+    let data = [];
+    let queue = [];
+    let node = this.root;
+    queue.push(node);
+    while (queue.length) {
+      node = queue.shift();
+      data.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return data;
+  }
 }
 
 let newBST = new BST();
 
 newBST.insert(10);
-newBST.insert(5);
-newBST.insert(2);
-newBST.insert(11);
+newBST.insert(6);
+newBST.insert(15);
+newBST.insert(3);
+newBST.insert(8);
+newBST.insert(20);
 console.log(newBST.find(11));
-console.log(newBST);
+console.log(newBST.BFS());
 
 // Leetcode 701 solution
 var insertIntoBST = function (root, val) {
@@ -116,4 +132,16 @@ var insertIntoBST = function (root, val) {
       }
     }
   }
+};
+
+// Leetcode 226 solution
+var invertTree = function (root) {
+  if (root === null) return null;
+  invertTree(root.left);
+  invertTree(root.right);
+  let temp;
+  temp = root.left;
+  root.left = root.right;
+  root.right = temp;
+  return root;
 };
