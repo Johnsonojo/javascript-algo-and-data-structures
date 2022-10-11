@@ -94,6 +94,20 @@ class BST {
     }
     return data;
   }
+
+  DFSPreOrder() {
+    let result = [];
+    let current = this.root;
+
+    const traverse = (node) => {
+      result.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    };
+
+    traverse(current);
+    return result;
+  }
 }
 
 let newBST = new BST();
@@ -104,44 +118,7 @@ newBST.insert(15);
 newBST.insert(3);
 newBST.insert(8);
 newBST.insert(20);
-console.log(newBST.find(11));
-console.log(newBST.BFS());
+// console.log(newBST.find(11));
 
-// Leetcode 701 solution
-var insertIntoBST = function (root, val) {
-  let newNode = new TreeNode(val);
-  if (root === null) {
-    root = newNode;
-    return root;
-  }
-  let current = root;
-  while (true) {
-    if (val < current.val) {
-      if (current.left === null) {
-        current.left = newNode;
-        return root;
-      } else {
-        current = current.left;
-      }
-    } else {
-      if (current.right === null) {
-        current.right = newNode;
-        return root;
-      } else {
-        current = current.right;
-      }
-    }
-  }
-};
-
-// Leetcode 226 solution
-var invertTree = function (root) {
-  if (root === null) return null;
-  invertTree(root.left);
-  invertTree(root.right);
-  let temp;
-  temp = root.left;
-  root.left = root.right;
-  root.right = temp;
-  return root;
-};
+console.log("BFS=====>", newBST.BFS());
+console.log("DFSPreOrder=====>", newBST.DFSPreOrder());
