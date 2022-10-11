@@ -108,6 +108,20 @@ class BST {
     traverse(current);
     return result;
   }
+
+  DFSPostOrder() {
+    let result = [];
+    let current = this.root;
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      result.push(node.value);
+    };
+
+    traverse(current);
+    return result;
+  }
 }
 
 let newBST = new BST();
@@ -122,3 +136,4 @@ newBST.insert(20);
 
 console.log("BFS=====>", newBST.BFS());
 console.log("DFSPreOrder=====>", newBST.DFSPreOrder());
+console.log("DFSPostOrder=====>", newBST.DFSPostOrder());
