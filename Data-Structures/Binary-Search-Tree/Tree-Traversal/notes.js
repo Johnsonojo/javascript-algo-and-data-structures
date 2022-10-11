@@ -31,18 +31,13 @@
  * 2. Pre-order traversal
  * 3. Post-order traversal
  *
- * In-order traversal
- * definition: In-order traversal is a type of depth-first traversal.
- * In this traversal, the left subtree is visited first, then the root and later the right sub-tree.
- * So the root is always visited between the left and right sub-trees.
- * In-order traversal is applied on binary search trees.
- * In-order traversal gives nodes in non-decreasing order.
  *
  * Pre-order traversal
  * definition: Pre-order traversal is a type of depth-first traversal.
  * In this traversal, the root node is visited first, then the left subtree and later the right sub-tree.
  * So the root is always visited before its child nodes (left and right sub-trees).
  * Pre-order traversal is applied on binary search trees.
+ *
  *
  * Post-order traversal
  * definition: Post-order traversal is a type of depth-first traversal.
@@ -51,5 +46,45 @@
  * Post-order traversal is applied on binary search trees.
  *
  *
+ * In-order traversal
+ * definition: In-order traversal is a type of depth-first traversal.
+ * In this traversal, the left subtree is visited first, then the root and later the right sub-tree.
+ * So the root is always visited between the left and right sub-trees.
+ * In-order traversal is applied on binary search trees.
+ * In-order traversal gives nodes in non-decreasing order.
+ *
+ *
+ * Pros and Cons of BFS
+ * Pros
+ * 1. BFS is easy to implement.
+ * 2. BFS is better than DFS when the target node is closer to the root node.
+ * 3. BFS can be used to find the shortest path in an unweighted graph.
+ * 4. BFS can be used to find the connected components in an undirected graph.
+ * 5. BFS can be used to find the two-vertices connectivity in an undirected graph.
+ * 6. BFS can be used to find the bridges in a graph.
+ * 7. BFS can be used to find the articulation points in a graph.
+ *
+ * Cons
+ * 1. BFS is not suitable for finding the shortest path in a weighted graph.
+ * 2. BFS is not suitable for finding the cycles in a graph.
+ * 3. BFS is not suitable for finding the strongly connected components in a directed graph.
+ * 4. BFS is not suitable for finding the topological sorting of a graph.
+ * 5. BFS is not suitable for finding the Hamiltonian cycles in a graph.
+ *
+ * Pros and Cons of DFS
+ * Pros
+ * 1. DFS is easy to implement.
+ * 2. DFS can be used to find the cycles in a graph.
+ * 3. DFS can be used to find the strongly connected components in a directed graph.
+ * 4. DFS can be used to find the topological sorting of a graph.
+ * 5. DFS can be used to find the Hamiltonian cycles in a graph.
+ * 6. DFS can be used to find the Eulerian cycles in a graph.
+ * 7. DFS can be used to find the bridges in a graph.
+ *
+ * Cons
+ * 1. DFS is not suitable for finding the shortest path in an unweighted graph.
+ * 2. DFS is not suitable for finding the connected components in an undirected graph.
+ * 3. DFS is not suitable for finding the two-vertices connectivity in an undirected graph.
+ * 4. DFS is not suitable for finding the articulation points in a graph.
  *
  */
