@@ -93,18 +93,17 @@ var increasingBST = function (root) {
 
 var sortedArrayToBST = function (nums) {
   if (!nums.length) return null;
-  // Since the nums array is sorted in ascending order
-  // We assume all the elem of the array are less than the middle elem
+  // Since the nums array is sorted in ascending order we assume that when we the array into two, all the elem of the left part of the array are less than the middle elem
 
   // Calculate the middle of the array
   let mid = Math.floor(nums.length / 2);
 
-  // Create the root node
-  let root = new TreeNode(nums[mid]);
-
   // Create array for left and right part of the tree
   let leftArray = nums.slice(0, mid);
   let rightArray = nums.slice(mid + 1);
+
+  // Create the root node
+  let root = new TreeNode(nums[mid]);
 
   // Recursively create the left subtree with the left array values
   root.left = sortedArrayToBST(leftArray);
@@ -114,4 +113,41 @@ var sortedArrayToBST = function (nums) {
 
   // Return the root
   return root;
+};
+
+// Leetcode 590 solution
+// Given the root of an n-ary tree, return the postorder traversal of its nodes' values. Nary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value (See examples)
+
+var postorder = function (root) {
+  let result = [];
+  if (root === null) return result;
+
+  const traverse = (node) => {
+    for (let i = 0; i < node.children.length; i++) {
+      traverse(node.children[i]);
+    }
+    result.push(node.val);
+  };
+
+  traverse(root);
+  return result;
+};
+
+// Leetcode 589 solution
+// Given the root of an n-ary tree, return the preorder traversal of its nodes' values. Nary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value (See examples)
+
+var preorder = function (root) {
+  if (root === null) return [];
+
+  let result = [];
+
+  const traverse = (node) => {
+    result.push(node.val);
+    for (let i = 0; i < node.children.length; i++) {
+      traverse(node.children[i]);
+    }
+  };
+
+  traverse(root);
+  return result;
 };
