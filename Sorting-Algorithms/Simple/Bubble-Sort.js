@@ -11,12 +11,11 @@
 // Average Case: O(n^2)
 
 // Bubble Sort performs very well for arrays that are almost sorted.
-
-function bubbleSort1(arr) {
+function bubbleSortAscendingOrder1(arr) {
   for (let i = arr.length; i > 0; i--) {
     for (let j = 0; j < i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
-        //    Swap
+        // Swap
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
@@ -26,12 +25,11 @@ function bubbleSort1(arr) {
   return arr;
 }
 
-function bubbleSort2(arr) {
+function bubbleSortAscendingOrder2(arr) {
   let noSwaps;
   const swap = (arr, i, j) => {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   };
-
   for (let i = arr.length; i > 0; i--) {
     noSwaps = true;
     for (let j = 0; j < i - 1; j++) {
@@ -45,5 +43,39 @@ function bubbleSort2(arr) {
   return arr;
 }
 
-console.log(bubbleSort1([37, 45, 29, 8, -3, -45]));
-console.log(bubbleSort2([37, 45, 29, 8, -3, -45]));
+function bubbleSortDescendingOrder1(arr) {
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] < arr[j + 1]) {
+        // Swap
+        let temp = arr[j + 1];
+        arr[j + 1] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+function bubbleSortDescendingOrder2(arr) {
+  let noSwaps;
+  const swap = (arr, i, j) => {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  };
+  for (let i = arr.length; i > 0; i--) {
+    noSwaps = true;
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] < arr[j + 1]) {
+        swap(arr, j + 1, j);
+        noSwaps = false;
+      }
+    }
+    if (noSwaps) break;
+  }
+  return arr;
+}
+
+console.log(bubbleSortAscendingOrder1([37, 45, 29, 8, -3, -45]));
+console.log(bubbleSortAscendingOrder2([37, 45, 29, 8, -3, -45]));
+console.log(bubbleSortDescendingOrder1([37, 45, 29, 8, -3, -45]));
+console.log(bubbleSortDescendingOrder2([37, 45, 29, 8, -3, -45]));
