@@ -1,4 +1,23 @@
-class MinBinaryHeap {
+/**
+ * Priority Queue
+ * A priority queue is a data structure where each element has a priority.
+ * Elements with higher priorities are served before elements with lower priorities.
+ * This is similar to the queue data structure, but instead of a first-in-first-out (FIFO) order, elements are served based on their priority.
+ * The Big O of priority queues
+ * Insertion - O(log n)
+ * Removal - O(log n)
+ * Searching - O(n)
+ * Access - O(n)
+ */
+
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+
+class PriorityQueue {
   constructor() {
     this.values = [];
   }
@@ -10,14 +29,16 @@ class MinBinaryHeap {
     while (idx > 0) {
       let parentIdx = Math.floor((idx - 1) / 2);
       let parent = this.values[parentIdx];
-      if (element >= parent) break;
+      if (element.priority >= parent.priority) break;
       this.values[parentIdx] = element;
       this.values[idx] = parent;
       idx = parentIdx;
     }
   }
-  insert(value) {
-    this.values.push(value);
+
+  enqueue(val, priority) {
+    let newNode = new Node(val, priority);
+    this.values.push(newNode);
     this.bubbleUp();
   }
 
@@ -34,15 +55,15 @@ class MinBinaryHeap {
 
       if (leftChildIdx < length) {
         leftChild = this.values[leftChildIdx];
-        if (leftChild < element) {
+        if (leftChild.priority < element.priority) {
           swap = leftChildIdx;
         }
       }
       if (rightChildIdx < length) {
         rightChild = this.values[rightChildIdx];
         if (
-          (swap === null && rightChild < element) ||
-          (swap !== null && rightChild < leftChild)
+          (swap === null && rightChild.priority < element.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
         ) {
           swap = rightChildIdx;
         }
@@ -54,7 +75,7 @@ class MinBinaryHeap {
     }
   }
 
-  extractMin() {
+  dequeue() {
     let min = this.values[0];
     let end = this.values.pop();
     if (this.values.length > 0) {
@@ -65,21 +86,11 @@ class MinBinaryHeap {
   }
 }
 
-let newMinBinaryHeap = new MinBinaryHeap();
+let newPriorityQueue = new PriorityQueue();
 
-newMinBinaryHeap.insert(41);
-newMinBinaryHeap.insert(39);
-newMinBinaryHeap.insert(33);
-newMinBinaryHeap.insert(18);
-newMinBinaryHeap.insert(27);
-newMinBinaryHeap.insert(12);
-newMinBinaryHeap.insert(55);
-console.log(newMinBinaryHeap.values);
-console.log(newMinBinaryHeap.extractMin());
-console.log(newMinBinaryHeap.extractMin());
-console.log(newMinBinaryHeap.extractMin());
-console.log(newMinBinaryHeap.extractMin());
-console.log(newMinBinaryHeap.extractMin());
-console.log(newMinBinaryHeap.extractMin());
-console.log(newMinBinaryHeap.extractMin());
-console.log(newMinBinaryHeap.values);
+newPriorityQueue.enqueue("eat", 0);
+newPriorityQueue.enqueue("sleep", 1);
+newPriorityQueue.enqueue("wake up", 2);
+newPriorityQueue.enqueue("fast", 0);
+console.log(newPriorityQueue.dequeue());
+console.log(newPriorityQueue.values);
