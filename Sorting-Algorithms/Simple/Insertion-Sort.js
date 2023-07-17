@@ -34,4 +34,4 @@ function insertionSort(arr) {
   return arr;
 }
 
-console.log(insertionSort([02, 1, 9, 76, 4]));
+console.log(insertionSort([0, 2, 1, 9, 76, 4]));
